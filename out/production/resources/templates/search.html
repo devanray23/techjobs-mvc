@@ -23,9 +23,9 @@
                         th:checked="${column.key == 'all'}"/>
                 <label th:for="${column.key}" th:text="${column.value}"></label>
             </span>
+
         </p>
 
-        <h2 th:text="%{results}"></h2>
         <p>
             <label for="searchTerm">Keyword:</label>
             <input type="text" name="searchTerm" id="searchTerm" />
@@ -36,11 +36,22 @@
 
     <hr />
 
-    <table class="jobs-listing" th:each="map : ${jobsList)">
-        <tr th:each="mapEntry : %{map}">
-            <th th:each="%{mapEntry.key}"></th>
-            <td th:each="%{mapEntry.value"></td>
+    <!-- TODO #2 - Loop over jobs map to display all job fields -->
+
+    <table>
+        <caption>All Jobs</caption>
+        <tr>
+            <th>Name</th>
+            <th>Employer</th>
+            <th>Location</th>
+            <th>Position Type</th>
+            <th>Core Competency</th>
         </tr>
+        <div th:each="map : ${jobsList}">
+            <tr th:each="mapEntry : ${map}">
+                <td th:text="${mapEntry.value}"></td>
+            </tr>
+        </div>
     </table>
 </div>
 
